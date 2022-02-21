@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Mental Fit | {{pageTitle}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="{{pageDescription}}" name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{{cdn}}}/images/favicon.ico">
+
+        <!-- DataTables -->
+        <link href="{{{cdn}}}/dist/pages/home/css/home.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- App css -->
+        <link href="{{{cdn}}}/dist/css/vendor.min.css" rel="stylesheet" type="text/css" />
+
+				<style>
+
+        .card-box.clickable {
+          display: block;
+          border: 1px solid #fff;
+        }
+
+        .card-box.clickable:hover {
+          cursor: pointer;
+          border: 1px solid #000;
+        }
+
+        </style>
+
+        <script src="{{{cdn}}}/js/modernizr.min.js"></script>
+    </head>
+
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            {{>left_navbar}}
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+
+                <!-- Top Bar Start -->
+                {{>topbar}}
+                <!-- Top Bar End -->
+
+
+
+                <!-- Start Page content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                {{#allRooms}}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div href="/room/{{slug}}" class="card-box clickable">
+                                            <h4 class="mt-0">{{category}}</h4>
+                                            <p class="text-muted pre">{{description}}</p>
+                                            <p class="text-muted tickets-list mb-0">Subscribers: {{subscribers.length}}</p>
+                                        </div>
+                                    </div><!-- end col -->
+                                </div>
+                                <!-- end row -->
+                                {{/allRooms}}
+                            </div><!-- end col -->
+
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card-box">
+                                            <h3 class="header-title">Rooms</h3>
+                                            <p class="text-muted">Rooms are places to discuss a specific topic</p>
+                                            <p class="text-muted">People can make new topics in rooms where other people can then comment on them!</p>
+                                            <a href="/addroom" class="btn btn-block btn-sm btn-primary waves-effect waves-light">Add a new room</a>
+                                        </div>
+                                    </div><!-- end col -->
+                                </div>
+                                <!-- end row -->
+                            </div><!-- end col -->
+
+                        </div> <!-- end row -->
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    {{>footer}}
+                </footer>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- modals -->
+        {{>modal_login}}
+
+        <!-- jQuery  -->
+        <script src="{{{cdn}}}/dist/js/vendor.min.js"></script>
+
+        <script src="{{{cdn}}}/dist/pages/home/js/home.min.js"></script>
+
+        <!-- App js (Idk what this is for lol) -->
+        <script src="{{{cdn}}}/dist/js/app.min.js"></script>
+
+        <!-- global customs -->
+        <script src="{{{cdn}}}/dist/js/global-custom.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // $('#datatable').dataTable();
+
+                $('.clickable').on('click', function(event){
+                    window.location.href = $(this).attr('href');;
+                });
+            });
+        </script>
+
+        <!-- check logged in (for chat) -->
+        {{#user}}
+          {{>chat}}
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+          <script src="{{{cdn}}}/js/chat.js"></script>
+        {{/user}}
+
+    </body>
+</html>

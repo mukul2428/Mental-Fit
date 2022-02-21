@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Mental Fit | {{pageTitle}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="{{pageDescription}}" name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{{cdn}}}/images/favicon.ico">
+
+        <!-- DataTables -->
+        <link href="{{{cdn}}}/dist/pages/home/css/home.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- App css -->
+        <link href="{{{cdn}}}/dist/css/vendor.min.css" rel="stylesheet" type="text/css" />
+
+        <script src="{{{cdn}}}/js/modernizr.min.js"></script>
+
+        <style>
+
+        .card-box.clickable {
+          display: block;
+          border: 1px solid #fff;
+        }
+
+        .card-box.clickable:hover {
+          cursor: pointer;
+          border: 1px solid #000;
+        }
+
+        </style>
+
+    </head>
+
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            {{>left_navbar}}
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+
+                <!-- Top Bar Start -->
+                {{>topbar}}
+                <!-- Top Bar End -->
+
+
+
+                <!-- Start Page content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <!-- <div class="row">
+                            <div class="col-12">
+                                <div class="card-box">
+                                    <h4 class="header-title">Latest Posts</h4>
+
+
+
+
+                                    <table class="table table-hover m-0 tickets-list table-actions-bar dt-responsive nowrap" cellspacing="0" width="100%" id="datatable">
+                                        <thead>
+                                        <tr>
+                                            <th>Room</th>
+                                            <th>Posted by</th>
+                                            <th>Topic</th>
+                                            <th>Description</th>
+                                            <th>Replies</th>
+                                            <th>Date</th>
+                                            <th class="hidden-sm">Action</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            <tr>
+                                                <td><a href="/room/{{room.slug}}"><b>{{room.name}}</b></a></td>
+                                                <td>
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{{cdn}}}/images/users/avatar-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
+                                                        <span class="ml-2">{{user.username}}</span>
+                                                    </a>
+                                                </td>
+
+                                                <td><a href="/room/{{room.slug}}/topic/{{slug}}">{{title}}</a></td>
+
+                                                <td>{{description}}</td>
+
+                                                <td>
+                                                    <span class="badge badge-info">{{numReplies}}</span>
+                                                </td>
+
+                                                <td>{{timestamp}}</td>
+
+                                                <td>
+                                                    <div class="btn-group dropdown">
+                                                        <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit Ticket</a>
+                                                            <a class="dropdown-item" href="#"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Close</a>
+                                                            <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
+                                                            <a class="dropdown-item" href="#"><i class="mdi mdi-star mr-2 font-18 text-muted vertical-middle"></i>Mark as Unread</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- end row -->
+
+                        {{#topics}}
+                        <div class="row">
+                            <div class="col-12">
+                                <div href="/room/{{room.slug}}/topic/{{slug}}" class="card-box clickable">
+                                    <p class="text-muted tickets-list"><a class="underline no-color-change" href="/room/{{room.slug}}">{{room.name}}</a> | Posted by <a class="underline no-color-change" href="/user/{{user.username}}">{{user.username}}</a> | {{timestamp}}</p>
+                                    <h4 class="">{{title}}</h4>
+                                    <div class="description">{{{description}}}</div>
+                                    <p class="text-muted tickets-list mb-0"><i class="mdi mdi-comment"></i> {{numReplies}}</p>
+                                </div>
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        {{/topics}}
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    {{>footer}}
+                </footer>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- modals -->
+        {{>modal_login}}
+
+        <!-- jQuery  -->
+        <script src="{{{cdn}}}/dist/js/vendor.min.js"></script>
+
+        <script src="{{{cdn}}}/dist/pages/home/js/home.min.js"></script>
+
+        <!-- App js (Idk what this is for lol) -->
+        <script src="{{{cdn}}}/dist/js/app.min.js"></script>
+
+        <!-- global customs -->
+        <script src="{{{cdn}}}/dist/js/global-custom.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // $('#datatable').dataTable();
+
+                $('.clickable').on('click', function(event){
+                    window.location.href = $(this).attr('href');;
+                });
+            });
+        </script>
+
+        <!-- check logged in (for chat) -->
+        {{#user}}
+          {{>chat}}
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+          <script src="{{{cdn}}}/js/chat.js"></script>
+        {{/user}}
+
+    </body>
+</html>
