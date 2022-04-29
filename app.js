@@ -5,10 +5,14 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 
 // connect to mongodb
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', function () {
   console.log("sucessfully connected to mongodb")
 });
 
@@ -23,15 +27,15 @@ app.set('views', __dirname + '/views');
 app.use(express.static('public'))
 
 // support post requests
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
-})); 
+}));
 
 // initialize session
 app.use(session({
-	secret: process.env.SESSION_SECRET,
-	resave: false,
+  secret: process.env.SESSION_SECRET,
+  resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
 }));
