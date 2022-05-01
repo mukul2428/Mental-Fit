@@ -1,7 +1,7 @@
 /node_modules/
 .env
 .DS_Store
-# package-lock.json
+package-lock.json
 /theme/
 /dev/
 /public/dist/
