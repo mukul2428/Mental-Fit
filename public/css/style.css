@@ -173,16 +173,22 @@ File: Main Css File
 
 .side-menu .topbar-left {
   background-color: #ffffff;
-  height: 70px;
-  padding-left: 25px;
-  position: fixed;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
   z-index: 1;
-  width: 240px;
-  top: 0;
+  font-family: "Rubik", sans-serif;
 }
 
-.side-menu .topbar-left .logo {
-  line-height: 70px;
+.side-menu .topbar-left a {
+  text-decoration: none;
+  color: black;
+}
+
+.side-menu .topbar-left a:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .side-menu .topbar-left .logo i {
