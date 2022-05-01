@@ -51,9 +51,7 @@
     "time-ago": "^0.2.1",
     "type-is": "^1.6.16",
     "utils-merge": "1.0.1",
-    "vary": "^1.1.2"
-  },
-  "devDependencies": {
+    "vary": "^1.1.2",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
@@ -67,6 +65,9 @@
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.1",
     "gulplog": "^1.0.0"
+  },
+  "devDependencies": {
+    
   },
   "main": "app.js",
   "repository": {
