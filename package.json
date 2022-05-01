@@ -81,5 +81,8 @@
     "url": "https://github.com/mukul2428/Mental-Fit/issues"
   },
   "homepage": "https://github.com/mukul2428/Mental-Fit#readme",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "16.13.1"
+  }
 }
