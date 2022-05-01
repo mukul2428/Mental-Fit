@@ -7,7 +7,9 @@
     "start": "npm run build & npm run serve",
     "clean": "rimraf ./public/dist",
     "serve": "nodemon ./bin/www",
-    "build": "npm run clean && cross-env NODE_ENV=production gulp prod"
+    "build": "npm run clean && cross-env NODE_ENV=production gulp prod",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "dependencies": {
     "express": "^4.18.1",
