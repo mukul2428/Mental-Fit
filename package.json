@@ -1,5 +1,5 @@
 {
-  "name": "reddit_clone",
+  "name": "mental_fit",
   "version": "0.0.0",
   "server": false,
   "private": true,
@@ -25,7 +25,7 @@
     "encodeurl": "^1.0.2",
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
-    "express":"*",
+    "express": "*",
     "express-session": "^1.17.1",
     "finalhandler": "1.1.1",
     "fresh": "0.5.2",
@@ -69,5 +69,17 @@
     "gulp-uglify": "^3.0.1",
     "gulplog": "^1.0.0",
     "rimraf": "^2.6.2"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukul2428/Mental-Fit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mukul2428/Mental-Fit/issues"
+  },
+  "homepage": "https://github.com/mukul2428/Mental-Fit#readme",
+  "description": ""
 }
