@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build & npm run serve",
     "clean": "rimraf ./public/dist",
-    "serve": "nodemon ./bin/www",
+    "serve": "nodemon app.js",
     "build": "npm run clean && cross-env NODE_ENV=production gulp prod"
   },
   "dependencies": {

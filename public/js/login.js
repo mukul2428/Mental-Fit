@@ -1,5 +1,5 @@
 window.alert = function (title, message) {
-  if(title === "Loading") {
+  if (title === "Loading") {
     message = `<div class="sk-circle">
                           <div class="sk-circle1 sk-child"></div>
                           <div class="sk-circle2 sk-child"></div>
@@ -19,20 +19,20 @@ window.alert = function (title, message) {
   $("#alert-modal .modal-body").html(message)
 
   // check if alert modal is showing
-  if(($("#alert-modal").data('bs.modal') || {})._isShown === false) {
+  if (($("#alert-modal").data('bs.modal') || {})._isShown === false) {
     $('.modal').modal('hide'); //hide all other modals first
   }
   $("#alert-modal").modal('show');
 };
 
-(function(){
-  $( "#login-form" ).submit(function( event ) {
+(function () {
+  $("#login-form").submit(function (event) {
     event.preventDefault();
 
     // grab form values
     var credentials = {
-      username: $( "#username" ).val(),
-      password: $( "#password" ).val(),
+      username: $("#username").val(),
+      password: $("#password").val(),
     }
 
     if (credentials.username.length == 0) {
@@ -52,8 +52,8 @@ window.alert = function (title, message) {
       url: '/auth/login',
       type: 'POST',
       data: credentials,
-      success: function(data, textStatus, jqXHR) {
-        if(data.confirmation != 'success') {
+      success: function (data, textStatus, jqXHR) {
+        if (data.confirmation != 'success') {
           alert('error', data.message);
         } else {
           //alert('success', data.message);
@@ -61,29 +61,67 @@ window.alert = function (title, message) {
         }
 
       },
-      error: function(jqHXR, textStatus, err) {
+      error: function (jqHXR, textStatus, err) {
         alert('error', err);
       }
     })
 
   });
 
-  $( "#signup-form" ).submit(function( event ) {
+  $("#signup-form").submit(function (event) {
     event.preventDefault();
 
     // grab form values
     var credentials = {
-      username: $( "#username2" ).val(),
-      password: $( "#password2" ).val(),
+      firstName: $("#fname").val(),
+      lastName: $("#lname").val(),
+      email: $("#email").val(),
+      username: $("#username2").val(),
+      password: $("#password2").val(),
+      phone: $("#phnumber").val(),
+    }
+
+    var emailre = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var phonere = /^([+]\d{2})?\d{10}$/;
+
+    if (credentials.firstName.length == 0) {
+      alert('error', 'Please enter your first name');
+      return;
+    }
+
+    if (credentials.lastName.length == 0) {
+      alert('error', 'Please enter your last name');
+      return;
+    }
+
+    if (credentials.email.length == 0) {
+      alert('error', 'Please enter your email');
+      return;
+    }
+
+    if (!emailre.test(credentials.email)) {
+      alert('error', 'Please enter correct email');
+      return;
     }
 
     if (credentials.username.length == 0) {
+      alert('error', credentials.email);
       alert('error', "Please enter your username");
       return;
     }
 
     if (credentials.password.length == 0) {
       alert('error', "Please enter your password");
+      return;
+    }
+
+    if (credentials.phone.length == 0) {
+      alert('error', 'Please enter your phone number');
+      return;
+    }
+
+    if (!phonere.test(credentials.phone)) {
+      alert('error', 'Please enter correct phone number');
       return;
     }
 
@@ -94,8 +132,8 @@ window.alert = function (title, message) {
       url: '/auth/register',
       type: 'POST',
       data: credentials,
-      success: function(data, textStatus, jqXHR) {
-        if(data.confirmation != 'success') {
+      success: function (data, textStatus, jqXHR) {
+        if (data.confirmation != 'success') {
           alert('error', data.message);
         } else {
           //alert('success', data.message);
@@ -103,7 +141,7 @@ window.alert = function (title, message) {
         }
 
       },
-      error: function(jqHXR, textStatus, err) {
+      error: function (jqHXR, textStatus, err) {
         alert('error', err);
       }
     })
@@ -111,10 +149,10 @@ window.alert = function (title, message) {
   });
 })()
 
-window.redirect = function(location, time) {
-  if(time === 0) window.location.href = location;
+window.redirect = function (location, time) {
+  if (time === 0) window.location.href = location;
   else {
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.href = location;
     }, time)
   }
