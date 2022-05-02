@@ -94,6 +94,8 @@ window.alert = function (title, message) {
       return;
     }
 
+    credentials.fullName = credentials.firstName + ' ' + credentials.lastName;
+
     if (credentials.email.length == 0) {
       alert('error', 'Please enter your email');
       return;
