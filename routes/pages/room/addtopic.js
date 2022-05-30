@@ -34,13 +34,8 @@ module.exports = (req, res) => {
 			.then(rooms => {
 				if (rooms.length > 0) {
 					//if found within the database, render the room
-					if (rooms[0].subscribers.includes(User.findById(req.session.user.id))) {
-						config['pageTitle'] = rooms[0].category + ' > Add A Topic';
-						res.render('addtopic', config)
-					} else {
-						let redirectURL = '/room/' + rooms[0].category.toLowerCase()
-						res.redirect(redirectURL)
-					}
+					config['pageTitle'] = rooms[0].category + ' > Add A Topic';
+					res.render('addtopic', config)
 				} else if (rooms.length === 0) {
 					//if there are no results, tell client the room was not found
 					res.json({
